@@ -3,11 +3,13 @@ include_directories( ${OpenCV_INCLUDE_DIRS}
                      ${Boost_INCLUDE_DIR}
                      src
                      src/opt_parser
+                     src/clusterize
                      )
 
 add_executable( clusterizer
                 src/clusterizer.cpp
                 src/opt_parser/opt_parser.cpp
+                src/clusterize/clusterize.cpp
                 )
 
 

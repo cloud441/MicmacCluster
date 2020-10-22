@@ -5,4 +5,10 @@
 #include <string>
 
 #include "opt_parser.hpp"
-#include "clusterize.hpp"
+
+namespace cluster
+{
+
+    int clusterize(std::vector<std::string> set, Option opt);
+
+};
