@@ -10,6 +10,6 @@
 namespace cluster
 {
 
-    int clusterize(std::vector<std::string> set, Option opt);
+    int clusterize(std::string cur_path, Option opt);
 
 };

@@ -8,25 +8,9 @@
 static int cloudBuilding(Option opt)
 {
     //Vectorize the set and send to clusterize
-    DIR* directory;
-    struct dirent *entry;
-    std::vector<std::string> set;
-    if (!(directory = opendir(opt.dirname_get().c_str())))
-    {
-        std::cerr << "Directory name: " << "'" << opt.dirname_get() << "'"
-                  << " is a wrong location" << std::endl;
-        return 1;
-    }
 
-    while((entry = readdir(directory)))
-    {
-        if (entry->d_type == DT_REG)
-            set.push_back(std::string(entry->d_name));
-    }
+    cluster::clusterize(opt.dirname_get(), opt);
 
-    cluster::clusterize(set, opt);
-
-    closedir(directory);
     return 0;
 }
 
@@ -35,7 +19,7 @@ static int cloudBuilding(Option opt)
 int main(int argc, char **argv)
 {
     Option opt = Option(argc, argv);
-    if (opt.is_help_get())
+    if (opt.isHelp_get())
         return 0;
 
     return cloudBuilding(opt);
