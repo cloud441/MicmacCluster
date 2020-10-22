@@ -32,3 +32,8 @@ bool Option::is_help_get()
 {
     return is_help_;
 }
+
+std::string Option::dirname_get()
+{
+    return dirname_;
+}

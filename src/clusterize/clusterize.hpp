@@ -5,6 +5,7 @@
 #include <string>
 
 #include "opt_parser.hpp"
+#include "exec_cmd.hpp"
 
 namespace cluster
 {

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<XmlXifInfo>
+     <GITRev>a789fe2-dirty</GITRev>
+     <FocMM>8.80000000000000071</FocMM>
+     <Foc35>24</Foc35>
+     <ExpTime>0.00625000000000000035</ExpTime>
+     <Diaph>4.5</Diaph>
+     <IsoSpeed>400</IsoSpeed>
+     <Sz>4096 2160</Sz>
+     <Cam>FC6310</Cam>
+     <BayPat>RVWB</BayPat>
+     <Date>
+          <Y>2018</Y>
+          <M>10</M>
+          <D>18</D>
+          <Hour>
+               <H>13</H>
+               <M>29</M>
+               <S>44</S>
+          </Hour>
+     </Date>
+</XmlXifInfo>

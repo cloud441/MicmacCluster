@@ -14,7 +14,8 @@ namespace cluster
     {
         if (opt.is_help_get())
             set = set;
-        // run tapioca and log return in tapioca.log
+
+        exec::execTapioca();
         // run Tapas and log return in tapas.log
 
         // if tapas failed with image error infos, split set

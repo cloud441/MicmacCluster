@@ -1,15 +1,16 @@
 # Project:
-include_directories( ${OpenCV_INCLUDE_DIRS}
-                     ${Boost_INCLUDE_DIR}
+include_directories( ${Boost_INCLUDE_DIR}
                      src
                      src/opt_parser
                      src/clusterize
+                     src/exec_cmd
                      )
 
 add_executable( clusterizer
                 src/clusterizer.cpp
                 src/opt_parser/opt_parser.cpp
                 src/clusterize/clusterize.cpp
+                src/exec_cmd/exec_cmd.cpp
                 )
 
 
@@ -29,9 +30,6 @@ endif()
 find_package( Boost COMPONENTS system program_options REQUIRED)
 set(LIBRARIES Boost::system Boost::program_options ${CMAKE_DL_LIBS})
 
-#OpenCV Libraries:
-find_package( OpenCV REQUIRED )
-
 
 
 
@@ -40,6 +38,5 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 target_link_libraries( clusterizer
-                    ${OpenCV_LIBS}
                     ${Boost_LIBRARIES}
                     )
