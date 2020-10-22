@@ -1,13 +1,43 @@
-cmake_minimum_required(VERSION 2.8)
-project( MicmacCluster )
-find_package( OpenCV REQUIRED )
+# Project:
 include_directories( ${OpenCV_INCLUDE_DIRS}
-                     src/)
+                     ${Boost_INCLUDE_DIR}
+                     src
+                     src/opt_parser
+                     )
+
 add_executable( clusterizer
-                src/clusterizer.cpp)
+                src/clusterizer.cpp
+                src/opt_parser/opt_parser.cpp
+                )
+
+
+
+
+### SETUP ###
+
+cmake_minimum_required(VERSION 3.12)
+project( MicmacCluster )
+set(CMAKE_CXX_STANDARD 17)
+
+#BOOST Libraries:
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(Boost_USE_STATIC_LIBS ON)
+endif()
+
+find_package( Boost COMPONENTS system program_options REQUIRED)
+set(LIBRARIES Boost::system Boost::program_options ${CMAKE_DL_LIBS})
+
+#OpenCV Libraries:
+find_package( OpenCV REQUIRED )
+
+
+
 
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-target_link_libraries( clusterizer ${OpenCV_LIBS} )
+target_link_libraries( clusterizer
+                    ${OpenCV_LIBS}
+                    ${Boost_LIBRARIES}
+                    )

@@ -3,15 +3,11 @@
 
 
 
-
-
-
 int main(int argc, char **argv)
 {
-    if (argc > 10)
-    {
-        std::cerr << "test";
-    }
+    Option opt = Option(argc, argv);
+    if (opt.is_help_get())
+        return 0;
 
     return 0;
 }
