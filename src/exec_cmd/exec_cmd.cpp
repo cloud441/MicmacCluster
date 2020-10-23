@@ -1,5 +1,7 @@
 #include "exec_cmd.hpp"
 
+#include <ctime>
+
 namespace exec
 {
 
@@ -68,5 +70,45 @@ namespace exec
         if (error)
             exit(2);
     }
+
+
+    void execTapas(std::string cur_path, Option opt)
+    {
+        pid_t pid;
+        int status;
+        bool error = false;
+        time_t timer = time(0);
+
+        if ((pid = fork()) < 0)
+        {
+            std::cerr << "The tapas command fork failed." << std::endl;
+            exit(1);
+        }
+        if (!pid)
+        {
+            alarm(CMD_OVERTIME);
+            char pattern[cur_path.size() + 8];
+            strcpy(pattern, (cur_path + "/.*JPG").c_str());
+
+            char *args[6] = { "mm3d", "Tapas", (char *)opt.matchingMode_get().c_str(),
+                            pattern, "Out=Arbitrary", NULL };
+            if (opt.matchingMode_get() != "FraserBasic" && opt.matchingMode_get() != "RadialStd")
+            {
+                args[3] = NULL;
+                error = true;
+            }
+            int fd = openLogFile("../log/tapas.log");
+            execvp("mm3d", args);
+            close(fd);
+        }
+        else
+        {
+            while (wait(&status) != pid);
+        }
+
+        if (error)
+            exit(2);
+    }
+
 
 }

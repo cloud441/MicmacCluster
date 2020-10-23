@@ -13,6 +13,7 @@ namespace cluster
     int clusterize(std::string cur_path, Option opt)
     {
         exec::execTapioca(cur_path, opt);
+        exec::execTapas(cur_path, opt);
         // run Tapas and log return in tapas.log
 
         // if tapas failed with image error infos, split set
