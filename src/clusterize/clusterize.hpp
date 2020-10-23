@@ -7,6 +7,7 @@
 #include "opt_parser.hpp"
 #include "exec_cmd.hpp"
 #include "parser.hpp"
+#include "file_manager.hpp"
 
 namespace cluster
 {

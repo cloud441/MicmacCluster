@@ -5,6 +5,7 @@ include_directories( ${Boost_INCLUDE_DIR}
                      src/clusterize
                      src/exec_cmd
                      src/parser
+                     src/file_manager
                      )
 
 add_executable( clusterizer
@@ -13,6 +14,7 @@ add_executable( clusterizer
                 src/clusterize/clusterize.cpp
                 src/exec_cmd/exec_cmd.cpp
                 src/parser/parser.cpp
+                src/file_manager/file_manager.cpp
                 )
 
 

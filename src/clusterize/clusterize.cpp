@@ -12,29 +12,25 @@ namespace cluster
 
     int clusterize(std::string cur_path, Option opt)
     {
+        if (!fileManager::verifyDir(cur_path))
+            return 0;
+
         exec::execTapioca(cur_path, opt);
         exec::execTapas(cur_path, opt);
 
-        if (parse::isLogFailure("../log/tapas.log"))
+        if (!parse::isLogFailure("../log/tapas.log"))
         {
-            std::string split_image = parse::imageToSplit("../log/tapas.log");
+            //std::string split_image = parse::imageToSplit("../log/tapas.log");
 
-            struct dirent *entry;
-            DIR * dir = opendir(cur_path);
 
-            if (!dir)
-            {
-                std::cerr << "Error in directory name of recursive clusterizing." << std::endl;
-                return 1;
-            }
+            std::string subset_1 = cur_path + '/' + "set-1";
+            std::string subset_2 = cur_path + '/' + "set-2";
 
-            //std::string subset_1 = cur_path + '/' + "set-1";
-            //std::string subset_2 = cur_path + '/' + "set-2";
-            //exec::execMkdir(subset_1);
-            //exec::execMkdir(subset_2);
+            mkdir(subset_1.c_str(), ACCESSPERMS);
+            mkdir(subset_2.c_str(), ACCESSPERMS);
 
-            //copyFiles(split_image, subset_1, true);
-            //copyFiles(split_image, subset_2, false);
+            //fileManager::copyFiles(split_image, subset_1, true);
+            //fileManager::copyFiles(split_image, subset_2, false);
 
             //int return_val_1 = clusterize(subset_1, opt);
             //int return_val_2 = clusterize(subset_2, opt);
