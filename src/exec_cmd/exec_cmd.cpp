@@ -3,6 +3,31 @@
 namespace exec
 {
 
+    /*
+    **  openLogFile():Open a file for logging the command execution.
+    **      The function also switch file descriptor of stdout and the file
+    **      to allow redirecting command output to the file.
+    */
+    static int openLogFile(char *filename)
+    {
+        int fd = open(filename, O_WRONLY);
+        if (fd == -1)
+        {
+            std::cerr << "Error in loading log file: '"
+                      << filename << "'" << std::endl;
+            exit(1);
+        }
+
+        if (dup2(fd, STDOUT) == -1)
+        {
+            std::cerr << "Error in duplicating file descriptor with: '"
+                      << filename << "'" << std::endl;
+            exit(1);
+        }
+        return fd;
+    }
+
+
     void execTapioca(std::string cur_path, Option opt)
     {
         pid_t pid;
@@ -33,8 +58,9 @@ namespace exec
                 args[3] = NULL;
                 error = true;
             }
-
+            int fd = openLogFile("../log/tapioca.log");
             execvp("mm3d", args);
+            close(fd);
         }
         else
             while (wait(&status) != pid);

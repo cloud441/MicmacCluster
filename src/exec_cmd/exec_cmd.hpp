@@ -5,8 +5,11 @@
 #include <sys/wait.h>
 #include <string>
 #include <cstring>
+#include <fcntl.h>
 
 #include "opt_parser.hpp"
+
+#define STDOUT 1
 
 namespace exec
 {
