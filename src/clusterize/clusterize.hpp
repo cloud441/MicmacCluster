@@ -6,10 +6,11 @@
 
 #include "opt_parser.hpp"
 #include "exec_cmd.hpp"
+#include "parser.hpp"
 
 namespace cluster
 {
 
     int clusterize(std::string cur_path, Option opt);
 
-};
+}; //namespace cluster

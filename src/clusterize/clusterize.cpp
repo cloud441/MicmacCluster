@@ -14,14 +14,19 @@ namespace cluster
     {
         exec::execTapioca(cur_path, opt);
         exec::execTapas(cur_path, opt);
-        // run Tapas and log return in tapas.log
 
-        // if tapas failed with image error infos, split set
-        // and call recursively in two set.
+        if (parse::isLogFailure("../log/tapas.log"))
+        {
+            // if tapas failed with image error infos, split set
+            // and call recursively in two set.
+        }
+        else
+        {
+            exec::execAperiCloud(cur_path, opt);
+        }
 
-        // if works, run apericloud or forest.
         return 0;
     }
 
 
-}
+} //namespace cluster

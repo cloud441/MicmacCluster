@@ -1,0 +1,42 @@
+BEGIN Pre-compile
+"NKS-Set-OfPatternAndFoc@[[.*JPG]]@0@1000000": 2 matches.
+NEW CALIB TheKeyCalib__Foc-8800_Cam-FC6310
+BEGIN Load Observation
+"NKS-Set-Homol@@dat": 2 matches.
+NB PACK PTS 2
+"NKS-Set-Orient@-Arbitrary": 2 matches.
+Pack Obs NKS-Set-Orient@-Arbitrary NB 2
+BEGIN Init Inconnues
+"NKS-Set-OfPatternAndFoc@[[.*JPG]]@0@1000000": 2 matches.
+make: 'all' is up to date.
+NUM 0 FOR DJI_0008.JPG
+NO GUIMBAL DJI_0008.JPG 1
+NUM 1 FOR DJI_0009.JPG
+NO GUIMBAL DJI_0009.JPG 1
+BEGIN Compensation
+BEGIN AMD 
+END AMD 
+APPLI APERO, NbUnknown = 27
+--- End Iter 0 STEP 0
+
+../data/DJI_0008.JPG 0 0
+../data/DJI_0009.JPG 0 0
+
+ *********************************
+ *     A-erotriangulation        *
+ *     P-hotogrammetrique        *
+ *     E-xperimentale            *
+ *     R-elativement             *
+ *     O-perationelle            *
+ *********************************
+
+
+
+*** There were 18 warnings of 1 different type 
+***  See ../data/WarnApero.txt for all warn description 
+***  First warn occured 
+
+18 occurence of warn type [Non rotation matrix has been used as a rotation]
+First context message : Accept False Rot
+First detected at line :  1333 of File /home/cloud_441/Downloads/micmac-git/src/micmac/src/bitm/matrix.cpp
+Com = "/usr/local/bin/mm3d" Apero "/usr/local/include/XML_MicMac/Apero-Cloud.xml"  DirectoryChantier=../data/  +PatternAllIm=".*JPG"  +Ext=dat +AeroIn=-Arbitrary +Out=AperiCloud_Arbitrary.ply +PlyBin=true +NbChan=-1 +SeuilEc=10.000000 +SavePtsCol=true

@@ -1,18 +1,16 @@
 #include "exec_cmd.hpp"
 
-#include <ctime>
-
 namespace exec
 {
 
     /*
-    **  openLogFile():Open a file for logging the command execution.
+    **  writeLogFile():Open a file for logging the command execution.
     **      The function also switch file descriptor of stdout and the file
     **      to allow redirecting command output to the file.
     */
-    static int openLogFile(char *filename)
+    static int writeLogFile(char *filename)
     {
-        int fd = open(filename, O_WRONLY);
+        int fd = open(filename, O_WRONLY | O_TRUNC);
         if (fd == -1)
         {
             std::cerr << "Error in loading log file: '"
@@ -28,6 +26,8 @@ namespace exec
         }
         return fd;
     }
+
+
 
 
     void execTapioca(std::string cur_path, Option opt)
@@ -60,7 +60,7 @@ namespace exec
                 args[3] = NULL;
                 error = true;
             }
-            int fd = openLogFile("../log/tapioca.log");
+            int fd = writeLogFile("../log/tapioca.log");
             execvp("mm3d", args);
             close(fd);
         }
@@ -70,6 +70,8 @@ namespace exec
         if (error)
             exit(2);
     }
+
+
 
 
     void execTapas(std::string cur_path, Option opt)
@@ -97,7 +99,7 @@ namespace exec
                 args[3] = NULL;
                 error = true;
             }
-            int fd = openLogFile("../log/tapas.log");
+            int fd = writeLogFile("../log/tapas.log");
             execvp("mm3d", args);
             close(fd);
         }
@@ -111,4 +113,32 @@ namespace exec
     }
 
 
-}
+
+
+    void execAperiCloud(std::string cur_path, Option opt)
+    {
+        pid_t pid;
+        int status;
+        bool error = false;
+
+        if ((pid = fork()) < 0)
+        {
+            std::cerr << "The AperiCloud command fork failed." << std::endl;
+            exit(1);
+        }
+        if (!pid)
+        {
+            char pattern[cur_path.size() + 8];
+            strcpy(pattern, (cur_path + "/.*JPG").c_str());
+
+            char *args[7] = { "mm3d", "AperiCloud",
+                            pattern ,"Arbitrary", NULL };
+            int fd = writeLogFile("../log/AperiCloud.log");
+            execvp("mm3d", args);
+            close(fd);
+        }
+        else
+            while (wait(&status) != pid);
+    }
+
+} //namespace exec
