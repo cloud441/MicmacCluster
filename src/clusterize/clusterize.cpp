@@ -17,13 +17,31 @@ namespace cluster
 
         if (parse::isLogFailure("../log/tapas.log"))
         {
-            // if tapas failed with image error infos, split set
-            // and call recursively in two set.
+            std::string split_image = parse::imageToSplit("../log/tapas.log");
+
+            struct dirent *entry;
+            DIR * dir = opendir(cur_path);
+
+            if (!dir)
+            {
+                std::cerr << "Error in directory name of recursive clusterizing." << std::endl;
+                return 1;
+            }
+
+            //std::string subset_1 = cur_path + '/' + "set-1";
+            //std::string subset_2 = cur_path + '/' + "set-2";
+            //exec::execMkdir(subset_1);
+            //exec::execMkdir(subset_2);
+
+            //copyFiles(split_image, subset_1, true);
+            //copyFiles(split_image, subset_2, false);
+
+            //int return_val_1 = clusterize(subset_1, opt);
+            //int return_val_2 = clusterize(subset_2, opt);
+            //return (return_val_1 || return_val_2);
         }
         else
-        {
             exec::execAperiCloud(cur_path, opt);
-        }
 
         return 0;
     }
