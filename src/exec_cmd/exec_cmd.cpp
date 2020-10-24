@@ -128,6 +128,7 @@ namespace exec
         }
         if (!pid)
         {
+            alarm(CMD_OVERTIME);
             char pattern[cur_path.size() + 8];
             strcpy(pattern, (cur_path + "/.*JPG").c_str());
 

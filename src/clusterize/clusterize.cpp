@@ -15,13 +15,15 @@ namespace cluster
         if (!fileManager::verifyDir(cur_path))
             return 0;
 
+        std::cout << "Tapioca is running..." << "\n";
         exec::execTapioca(cur_path, opt);
+        std::cout << "Tapioca finished.\nTapas is running..." << "\n";
         exec::execTapas(cur_path, opt);
+        std::cout << "Tapas finished." << "\n";
 
-        if (!parse::isLogFailure("../log/tapas.log"))
+        if (parse::isLogFailure("../log/tapas.log"))
         {
-            //std::string split_image = parse::imageToSplit("../log/tapas.log");
-
+            std::string split_image = parse::imageToSplit("../log/tapas.log");
 
             std::string subset_1 = cur_path + '/' + "set-1";
             std::string subset_2 = cur_path + '/' + "set-2";
@@ -37,7 +39,11 @@ namespace cluster
             //return (return_val_1 || return_val_2);
         }
         else
+        {
+            std::cout << "AperiCloud is running..." << "\n";
             exec::execAperiCloud(cur_path, opt);
+            std::cout << "AperiCloud finished." << std::endl;
+        }
 
         return 0;
     }

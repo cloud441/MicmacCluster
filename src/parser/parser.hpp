@@ -9,5 +9,6 @@ namespace parse
 {
 
     bool isLogFailure(std::string filename);
+    std::string imageToSplit(std::string logfile);
 
 }; // namespace parse

@@ -33,3 +33,6 @@
 
 # Data
 *.JPG
+
+# Compiling:
+build/
