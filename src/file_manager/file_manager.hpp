@@ -15,7 +15,8 @@ namespace fileManager
 
     bool verifyDir(std::string dirname);
     void moveFiles(std::string split_image, std::string dirname);
-    void moveCloud(std::string dirname, std::string output_dirname);
-    bool isBoundaryImage(std::string dirname, std::string image);
+    void moveCloud(std::string dirname);
+    bool checkBoundaryImage(std::string dirname, std::string image);
+    void moveBoundaryImage(std::string dirname, std::string image);
 
 }; // namespace fileManager

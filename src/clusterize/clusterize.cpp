@@ -27,10 +27,11 @@ namespace cluster
         if (parse::isLogFailure("../log/tapas.log"))
         {
             std::string split_image = parse::imageToSplit("../log/tapas.log");
-            if (fileManager::isBoundaryImage(cur_path, split_image))
+            if (fileManager::checkBoundaryImage(cur_path, split_image))
             {
-                std::cout << "Boundary image in cluster: " << cur_path << '\n';
-                return 1;
+                std::cout << "Boundary error image found in set " << cur_path << "\nRemoving...\n";
+                fileManager::moveBoundaryImage(cur_path, split_image);
+                return clusterize(cur_path, opt);
             }
 
             std::string subset_1 = cur_path + '/' + "set-1";
@@ -49,7 +50,7 @@ namespace cluster
         {
             std::cout << "AperiCloud is running..." << "\n";
             exec::execAperiCloud(cur_path, opt);
-            fileManager::moveCloud(cur_path, "../outputCloud");
+            fileManager::moveCloud(cur_path);
             std::cout << "AperiCloud finished." << std::endl;
         }
 

@@ -101,11 +101,11 @@ namespace fileManager
 
 
 
-    void moveCloud(std::string dirname, std::string output_dirname)
+    void moveCloud(std::string dirname)
     {
         std::string old_path = dirname + "/" + "AperiCloud_Arbitrary.ply";
         int nb_cloud = findNumberCloud(dirname);
-        std::string new_path = output_dirname + "/" + "AperiCloud_cluster_" + std::to_string(nb_cloud) + ".ply";
+        std::string new_path = std::string("../outputCloud/") + "AperiCloud_cluster_" + std::to_string(nb_cloud) + ".ply";
         rename(old_path.c_str(), new_path.c_str());
     }
 
@@ -174,12 +174,22 @@ namespace fileManager
 
 
 
-    bool isBoundaryImage(std::string dirname, std::string image)
+    bool checkBoundaryImage(std::string dirname, std::string image)
     {
         std::string first_image = firstImage(dirname);
         std::string last_image = lastImage(dirname);
 
-        return (image == first_image || image == last_image);
+        return (last_image == image || first_image == image);
+    }
+
+
+
+
+    void moveBoundaryImage(std::string dirname, std::string image)
+    {
+        std::string old_path = dirname + "/" + image;
+        std::string new_path = "../data/boundary_error_set/" + image;
+        rename(old_path.c_str(), new_path.c_str());
     }
 
 } // namespace fileManager
