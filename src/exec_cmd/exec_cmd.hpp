@@ -11,7 +11,8 @@
 #include "opt_parser.hpp"
 
 #define STDOUT 1
-#define CMD_OVERTIME 30  //If a command execution is longer than 3min, it stops and is considered as error.
+#define CMD_OVERTIME 30
+#define CMD_OVERTIME_TAPIOCA 600
 
 namespace exec
 {

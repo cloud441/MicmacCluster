@@ -5,7 +5,9 @@
 
 
 using namespace boost::program_options;
-
+/*
+**  Option(): option class constructor, that parse the option into a set.
+*/
 Option::Option(int argc, char ** argv)
 {
     try {

@@ -36,7 +36,11 @@ namespace fileManager
 
 
 
-
+    /*
+    **  moveFiles(): mov all the images from dirname into the two subset cluster.
+    **      Because of a alphabetical order in image listing, we separate the cluster
+    **      by cutting at the split_image that raise an error.
+    */
     void moveFiles(std::string split_image, std::string dirname)
     {
         struct dirent **entry_list;
@@ -75,7 +79,9 @@ namespace fileManager
 
 
 
-
+    /*
+    **  findNumberCloud(): numerate the output cloud file according to the dirname.
+    */
     static int findNumberCloud(std::string dirname)
     {
         if (dirname == "../data")
@@ -100,7 +106,9 @@ namespace fileManager
 
 
 
-
+    /*
+    **  moveCloud(): Move the generated cloud into the outputCloud/ durectory.
+    */
     void moveCloud(std::string dirname)
     {
         std::string old_path = dirname + "/" + "AperiCloud_Arbitrary.ply";
@@ -111,7 +119,9 @@ namespace fileManager
 
 
 
-
+    /*
+    **  firstImage(): Return the first cluster image name.
+    */
     static std::string firstImage(std::string dirname)
     {
         struct dirent **entry_list;
@@ -142,7 +152,9 @@ namespace fileManager
 
 
 
-
+    /*
+    **  lastImage(): Return the last cluster image name.
+    */
     static std::string lastImage(std::string dirname)
     {
         struct dirent **entry_list;
@@ -173,7 +185,10 @@ namespace fileManager
 
 
 
-
+    /*
+    **  checkBoundaryImage(): check if the image in first or last into the cluster.
+    **      This check is necessary to avoid border case in cluster split.
+    */
     bool checkBoundaryImage(std::string dirname, std::string image)
     {
         std::string first_image = firstImage(dirname);
@@ -184,7 +199,9 @@ namespace fileManager
 
 
 
-
+    /*
+    **  moveBoundaryImage(): move the boundary image into the special boundary_error_set directory.
+    */
     void moveBoundaryImage(std::string dirname, std::string image)
     {
         std::string old_path = dirname + "/" + image;

@@ -4,7 +4,7 @@ namespace exec
 {
 
     /*
-    **  writeLogFile():Open a file for logging the command execution.
+    **  writeLogFile(): Open a file for logging the command execution.
     **      The function also switch file descriptor of stdout and the file
     **      to allow redirecting command output to the file.
     */
@@ -29,7 +29,13 @@ namespace exec
 
 
 
-
+    /*
+    **  execTapioca(): Execute the tapioca command with according options.
+    **      to manage case of error, that micmac manage with asking a action
+    **      interactively, an alarm signal is set to CMD_OVERTIME_TAPIOCA.
+    **      The special value of overtime is due to tapioca that is slightly
+    **      longer than other command.
+    */
     void execTapioca(std::string cur_path, Option opt)
     {
         pid_t pid;
@@ -43,6 +49,7 @@ namespace exec
         }
         if (!pid)
         {
+            alarm(CMD_OVERTIME_TAPIOCA);
             char pattern[cur_path.size() + 8];
             strcpy(pattern, (cur_path + "/.*JPG").c_str());
 
@@ -73,13 +80,16 @@ namespace exec
 
 
 
-
+    /*
+    **  execTapas(): Execute Tapas command with according options.
+    **      to manage case of error, that micmac manage with asking a action
+    **      interactively, an alarm signal is set to CMD_OVERTIME.
+    */
     void execTapas(std::string cur_path, Option opt)
     {
         pid_t pid;
         int status;
         bool error = false;
-        time_t timer = time(0);
 
         if ((pid = fork()) < 0)
         {
@@ -114,7 +124,11 @@ namespace exec
 
 
 
-
+    /*
+    **  execAperiCloud(): Execute AperiCloud command.
+    **      to manage case of error, that micmac manage with asking a action
+    **      interactively, an alarm signal is set to CMD_OVERTIME.
+    */
     void execAperiCloud(std::string cur_path, Option opt)
     {
         pid_t pid;

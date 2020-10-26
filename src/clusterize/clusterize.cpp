@@ -7,7 +7,7 @@ namespace cluster
     **  Clusterize(): build separated cloud points with cluster method.
     **      It means that if Micmac couldn't build the cloud with the entire set,
     **      We split it at the unlinkable image of the set, and proceed to build
-    **      two clouds separately.
+    **      two clouds separately and recursively.
     */
 
     int clusterize(std::string cur_path, Option opt)

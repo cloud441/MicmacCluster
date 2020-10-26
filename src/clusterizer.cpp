@@ -7,11 +7,10 @@
 */
 static int cloudBuilding(Option opt)
 {
-    //Vectorize the set and send to clusterize
-
-    cluster::clusterize(opt.dirname_get(), opt);
-
-    return 0;
+    mkdir("../outputCloud", ACCESSPERMS);
+    std::string boundary_dirname = opt.dirname_get() + "/boundary_error_set";
+    mkdir(boundary_dirname.c_str(), ACCESSPERMS);
+    return cluster::clusterize(opt.dirname_get(), opt);
 }
 
 

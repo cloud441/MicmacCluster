@@ -3,7 +3,11 @@
 
 namespace parse
 {
-
+    /*
+    **  isLogFailure(): Parse the filename logfile to match the error case.
+    **      The idea is that MicMac command output finish by a '*' line if
+    **      no error occured.
+    */
     bool isLogFailure(std::string filename)
     {
         std::string line;
@@ -24,7 +28,9 @@ namespace parse
 
 
 
-
+    /*
+    **  imageToSplit(): parse the logfile to find the unlinked image name.
+    */
     std::string imageToSplit(std::string logfile)
     {
         std::string line;
