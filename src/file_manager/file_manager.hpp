@@ -7,7 +7,7 @@
 #include <string.h>
 #include <dirent.h>
 
-#define MIN_FILE_NB 4
+#define MIN_FILE_NB 3
 
 
 namespace fileManager

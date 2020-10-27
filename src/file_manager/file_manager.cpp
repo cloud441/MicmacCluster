@@ -82,12 +82,12 @@ namespace fileManager
     /*
     **  findNumberCloud(): numerate the output cloud file according to the dirname.
     */
-    static int findNumberCloud(std::string dirname)
+    static uint64_t findNumberCloud(std::string dirname)
     {
         if (dirname == "../data")
             return 0;
 
-        int nb_cloud = 0;
+        uint64_t nb_cloud = 0;
 
         char *token = strtok((char *)dirname.c_str(), "/");
         token = strtok(NULL, "/");
@@ -112,7 +112,7 @@ namespace fileManager
     void moveCloud(std::string dirname)
     {
         std::string old_path = dirname + "/" + "AperiCloud_Arbitrary.ply";
-        int nb_cloud = findNumberCloud(dirname);
+        uint64_t nb_cloud = findNumberCloud(dirname);
         std::string new_path = std::string("../outputCloud/") + "AperiCloud_cluster_" + std::to_string(nb_cloud) + ".ply";
         rename(old_path.c_str(), new_path.c_str());
     }

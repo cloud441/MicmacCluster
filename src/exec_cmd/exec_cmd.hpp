@@ -11,8 +11,8 @@
 #include "opt_parser.hpp"
 
 #define STDOUT 1
-#define CMD_OVERTIME 30
-#define CMD_OVERTIME_TAPIOCA 600
+#define CMD_OVERTIME 300
+#define CMD_OVERTIME_TAPIOCA 5400
 
 namespace exec
 {
