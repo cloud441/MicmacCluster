@@ -7,14 +7,27 @@
 
 # INTRODUCTION:
 
-    MicMac is an open source project that aims at being cross platform. Very few dependencies are mandatory
-to have the core program work.
+MicMac is a free open-source (Cecill-B licence) photogrammetric suite that can be used in a variety of 3D
+reconstruction scenarios. In aims mainly at professionnal or academic users but constant efforts are made
+to make it more accessible to the general public. One of MicMac strengths is its high degree of versatility.
+It can indeed be used in various fields : cartography, environment, industry, forestry, heritage, archaeology,...
+MicMac allows both the creation of 3D models and of ortho-imagery when appropriate.
+
 But MicMac works really bad with dataset that exceeds a dozen of images. And Especially if the dataset includes
-diferent points of view. The aim of this projetc is to give a solution about this Micmac weak point, without
+different points of view. The aim of this project is to give a solution about this Micmac weak point, without
 trying to seek a alternative into the source code. Because of a source code we didn't understand hardly anything,
 but that offers a pretty good 3D reconstruction, the best way to manage with MicMac is to build a wrapper on
 MicMac command which clusterize the dataset into logical subset.
 
+
+
+
+
+
+# AUTHORS:
+
+    SEAL Research Laboratory (EPITA)  |  Kevin Guillet (cloud441)
+                                      |  Tanzim Ahmed Mostafa
 
 
 
@@ -27,12 +40,6 @@ MicMac command which clusterize the dataset into logical subset.
     --> micmac (and prerequisites)
 
 
-
-
-# AUTHORS:
-
-    SEAL Research Laboratory (EPITA)  |  Kevin Guillet (cloud441)
-                                      |  Tanzim Ahmed Mostafa
 
 
 

@@ -14,6 +14,7 @@ Option::Option(int argc, char ** argv)
         options_description desc("Allowed options");
         desc.add_options()("help,h", "show usage")
                         ("detect,d", value<std::string>(), "mode of Tapioca detection")
+                        ("matching,m", value<std::string>(), "mode of Tapas matching")
                         ("data", value<std::string>(), "Specify the location of data directory.\
                          By default, the location is set to '../data/'");
 
@@ -22,6 +23,10 @@ Option::Option(int argc, char ** argv)
 
         if (map.count("detect"))
             detectMode_ = map["detect"].as<std::string>();
+
+        if (map.count("matching"))
+            matchingMode_ = map["matching"].as<std::string>();
+
 
         if (map.count("data"))
             dirname_ = map["data"].as<std::string>();
